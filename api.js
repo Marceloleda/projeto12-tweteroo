@@ -6,8 +6,8 @@ app.use(express.json())
 app.use(cors())
 
 
-let usuarios = [];
-let tweets = [];
+const usuarios = [];
+const tweets = [];
 
 
 app.post('/sign-up', (req, res)=>{
@@ -30,8 +30,13 @@ app.post('/tweets', (req, res) => {
 		res.status(400).send('Todos os campos são obrigatórios!');
 		return;
 	}
+    const resultName = usuarios.find((user)=> user.username === username)
+    if(!resultName){
+        return res.status(404).send("UNAUTHORIZED")
+    }
+    
 	tweets.unshift({username: username, tweet: tweet});
-	console.log(tweets);
+	// console.log(tweets);
 	res.status(201).send("OK");
 });
 
