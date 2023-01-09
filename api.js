@@ -32,9 +32,9 @@ app.post('/tweets', (req, res) => {
 	}
     const resultName = usuarios.find((user)=> user.username === username)
     if(!resultName){
-        return res.status(404).send("UNAUTHORIZED")
+        return res.status(401).send("UNAUTHORIZED")
     }
-    
+
 	tweets.unshift({username: username, tweet: tweet});
 	// console.log(tweets);
 	res.status(201).send("OK");
