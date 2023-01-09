@@ -24,7 +24,7 @@ app.post('/sign-up', (req, res)=>{
 })
 
 app.post('/tweets', (req, res) => {
-	const username = req.headers.user;
+	const username = req.body.username;
 	const tweet = req.body.tweet;
 	if(username === "" || tweet === ""){
 		res.status(400).send('Todos os campos são obrigatórios!');
